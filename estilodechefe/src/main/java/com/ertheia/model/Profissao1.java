@@ -27,7 +27,8 @@ public class Profissao1 implements Serializable{
 //	@ManyToMany(targetEntity=Usuario.class)
 //	private	Set usuarioSet;	
 	
-	
+	@ManyToOne
+	private Usuario usuario;
 	
 
 	public Profissao1() {
