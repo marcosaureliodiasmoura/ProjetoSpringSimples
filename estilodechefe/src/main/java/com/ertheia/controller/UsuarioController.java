@@ -1,35 +1,28 @@
 package com.ertheia.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ertheia.model.Profissao1;
 import com.ertheia.model.StatusPais;
 import com.ertheia.model.StatusPerfil;
-import com.ertheia.model.StatusProfissional;
 import com.ertheia.model.Usuario;
 import com.ertheia.repository.Usuarios;
 
-@RestController
+@Controller
 @RequestMapping("/usuarios")
 public class UsuarioController {
 	
@@ -42,36 +35,6 @@ public class UsuarioController {
 	private Usuarios usuarios;
     
     
-    //retornaod um nome apenas
-    @GetMapping("1nome/{nome}")
-    public Usuario buscar(@PathVariable String nome)
-    {
-    	return usuarios.findByNome(nome);
-    }
-    
-    @GetMapping("pesquisarprofissao/{nome}")
-    public List<Usuario> pesquisarUsuario(@PathVariable ("nome") String nome)
-    {
-    	return usuarios.pesquisarUsuario(nome);
-    }
-    
-
-    @GetMapping("pesquisar/{nome}")
-    public List<Usuario> pesquisarUsuarioNome(@PathVariable ("nome") String nome)
-    {
-    	return usuarios.pesquisarUsuarioNome(nome);
-    }
-    
-//    @GetMapping("query/{nome}")
-//    public List<Usuario> pesquisarUsuarioQuery(@PathVariable ("nome") String nome)
-//    {
-//    	return usuarios.pesquisarUsuarioNome(nome);
-//    }
-    
-    @RequestMapping(value = "/webservice", method = RequestMethod.GET)
-    public ResponseEntity<List<Usuario>> listar() {
-      return new ResponseEntity<List<Usuario>>(new ArrayList<Usuario>(usuarios.findAll()), HttpStatus.OK);
-    }
      
     
 
@@ -82,7 +45,6 @@ public class UsuarioController {
 		mv.addObject(new Usuario());		
 		mv.addObject("todosStatusPerfil", StatusPerfil.values());
 		mv.addObject("todosStatusPais", StatusPais.values());
-		mv.addObject("todosStatusProfissional", StatusProfissional.values());
 		return mv;
 	}
 	

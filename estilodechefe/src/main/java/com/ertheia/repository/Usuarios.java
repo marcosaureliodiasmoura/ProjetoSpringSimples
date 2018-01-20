@@ -1,11 +1,7 @@
 package com.ertheia.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
-import com.ertheia.model.Profissao1;
 import com.ertheia.model.Usuario;
 
 //O metodo JpaRepository possui os metodos do banco para realização qualquer ação!
@@ -14,18 +10,5 @@ import com.ertheia.model.Usuario;
 //Primeiro vem aqui, cria uma interface, extendi no respositorio  e ja 
 //dar um autowire (no usuariocontroller) pra poder usar
 public interface Usuarios extends JpaRepository<Usuario,Long> {
-	
-	Usuario findByNome (String nome);
-	
-	
-	@Query("from Usuario where profiss like concat(?1, '%')")
-	List<Usuario> pesquisarUsuario(String nome);
-	
-	@Query("from Usuario where nome like concat(?1, '%')")
-	List<Usuario> pesquisarUsuarioNome(String nome);
-	
-//	@Query("select from usuario as u join profissao1 as p where on p.codigo = u.profissao_codigo")
-	
-	
-	
+
 }
