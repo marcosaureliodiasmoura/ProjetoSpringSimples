@@ -1,5 +1,7 @@
 package com.ertheia.model;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,6 +10,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -18,11 +23,36 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-public class Usuario {
+public class Usuario implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
+	
+//	public Missao missoes[];
+	
+//	Missao quests;
+	
+	private int nivel = 1;
+	
+	private double xp = 100;
+	
+	
+	@ManyToOne
+	private Profissao1 profissao;
+	
+	@NotEmpty(message = "Informe o Nome do Usuário")
+	@Size(max = 20, message = "Aviso, o Nome não pode ultrapassar 20 Caracteres")
+	private String profiss;
+	
+	public String getProfiss() {
+		return profiss;
+	}
+
+	public void setProfiss(String profiss) {
+		this.profiss = profiss;
+	}
+	
 	
 	@NotEmpty(message = "Informe o Nome do Usuário")
 	@Size(max = 20, message = "Aviso, o Nome não pode ultrapassar 20 Caracteres")
@@ -101,6 +131,27 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public int getNivel()
+	{
+		return nivel;
+	}
+	
+	public void setNivel(int nivel)
+	{
+		this.nivel = nivel;
+	}
+	
+	public double getXp()
+	{
+		return xp;
+	}
+	
+	public void setXp(double xp)
+	{
+		this.xp = xp;
+	}
+	
 
 	public String getSobrenome() {
 		return sobrenome;
@@ -157,12 +208,18 @@ public class Usuario {
 	public void setPerfil(StatusPerfil perfil) {
 		this.perfil = perfil;
 	}
+
+	public Profissao1 getProfissao() {
+		return profissao;
+	}
+
+	public void setProfissao(Profissao1 profissao) {
+		this.profissao = profissao;
+	}
 	
 	
 	
-	
-	
-	
-	
+
+
 	
 }

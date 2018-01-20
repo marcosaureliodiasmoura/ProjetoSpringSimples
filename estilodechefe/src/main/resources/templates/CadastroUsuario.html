@@ -98,7 +98,14 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 				</div>
 			</div>
 
-
+		<div class="form-group" th:classappend="${#fields.hasErrors('profiss')} ? 'has-error'">
+				<label for="profiss" class="col-sm-2 control-label">profiss</label>
+				<div class="col-sm-2">
+					<select class="form-control" id="profiss" th:field="*{profiss}">
+						<option th:each="profiss : ${todosStatusProfissional}" th:value="${profiss.profissao}" th:text="${profiss.nomexx}"></option>
+					</select>
+				</div>
+			</div>
 
 
 			<div class="form-group">
