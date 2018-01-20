@@ -18,8 +18,14 @@ public interface Usuarios extends JpaRepository<Usuario,Long> {
 	Usuario findByNome (String nome);
 	
 	
-	@Query("from Usuario where nome like concat(?1, '%')")
+	@Query("from Usuario where profiss like concat(?1, '%')")
 	List<Usuario> pesquisarUsuario(String nome);
 	
-
+	@Query("from Usuario where nome like concat(?1, '%')")
+	List<Usuario> pesquisarUsuarioNome(String nome);
+	
+//	@Query("select from usuario as u join profissao1 as p where on p.codigo = u.profissao_codigo")
+	
+	
+	
 }

@@ -26,9 +26,9 @@ public class Profissao1 implements Serializable{
 	
 //	@ManyToMany(targetEntity=Usuario.class)
 //	private	Set usuarioSet;	
-	
-	@ManyToOne
-	private Usuario usuario;
+////	
+//	@ManyToOne
+//	private Usuario usuario;
 	
 
 	public Profissao1() {
@@ -43,7 +43,7 @@ public class Profissao1 implements Serializable{
 		this.nome = nome;
 		this.descricao = descricao;
 		this.nivel = nivel;
-//		this.usuarioSet = usuarioSet;
+//		this.usuario = usuario;
 
 	}
 	
@@ -85,13 +85,7 @@ public class Profissao1 implements Serializable{
 		this.nivel = nivel;
 	}
 
-//	public Set getUsuarioSet() {
-//		return usuarioSet;
-//	}
-//
-//	public void setUsuarioSet(Set usuarioSet) {
-//		this.usuarioSet = usuarioSet;
-//	}
+
 
 	@Override
 	public int hashCode() {

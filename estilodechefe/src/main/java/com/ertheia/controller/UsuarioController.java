@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ertheia.model.Profissao1;
 import com.ertheia.model.StatusPais;
 import com.ertheia.model.StatusPerfil;
+import com.ertheia.model.StatusProfissional;
 import com.ertheia.model.Usuario;
 import com.ertheia.repository.Usuarios;
 
@@ -48,13 +49,24 @@ public class UsuarioController {
     	return usuarios.findByNome(nome);
     }
     
-    
-    @GetMapping("pesquisar/{nome}")
+    @GetMapping("pesquisarprofissao/{nome}")
     public List<Usuario> pesquisarUsuario(@PathVariable ("nome") String nome)
     {
     	return usuarios.pesquisarUsuario(nome);
     }
     
+
+    @GetMapping("pesquisar/{nome}")
+    public List<Usuario> pesquisarUsuarioNome(@PathVariable ("nome") String nome)
+    {
+    	return usuarios.pesquisarUsuarioNome(nome);
+    }
+    
+//    @GetMapping("query/{nome}")
+//    public List<Usuario> pesquisarUsuarioQuery(@PathVariable ("nome") String nome)
+//    {
+//    	return usuarios.pesquisarUsuarioNome(nome);
+//    }
     
     @RequestMapping(value = "/webservice", method = RequestMethod.GET)
     public ResponseEntity<List<Usuario>> listar() {
@@ -70,6 +82,7 @@ public class UsuarioController {
 		mv.addObject(new Usuario());		
 		mv.addObject("todosStatusPerfil", StatusPerfil.values());
 		mv.addObject("todosStatusPais", StatusPais.values());
+		mv.addObject("todosStatusProfissional", StatusProfissional.values());
 		return mv;
 	}
 	

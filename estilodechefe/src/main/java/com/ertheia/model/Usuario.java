@@ -41,7 +41,17 @@ public class Usuario implements Serializable{
 	@ManyToOne
 	private Profissao1 profissao;
 	
+	@NotEmpty(message = "Informe o Nome do Usuário")
+	@Size(max = 20, message = "Aviso, o Nome não pode ultrapassar 20 Caracteres")
+	private String profiss;
 	
+	public String getProfiss() {
+		return profiss;
+	}
+
+	public void setProfiss(String profiss) {
+		this.profiss = profiss;
+	}
 	
 	
 	@NotEmpty(message = "Informe o Nome do Usuário")
