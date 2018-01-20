@@ -16,6 +16,7 @@ public class EstilodechefeApplication {
 		
 		}
 	
+	//Pra trabalhar com as definições do Brasil PT-BR (Data, numeração e virgulas)
 		@Bean
 		public LocaleResolver localeResolver()
 		{

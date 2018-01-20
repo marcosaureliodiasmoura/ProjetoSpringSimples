@@ -5,20 +5,20 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="LayoutPadrao">
 <head>
 
-<title>Cadastrar Missão</title>
+<title>Cadastrar Profissao</title>
 
 </head>
 
 
 <section layout:fragment="conteudo">
-<form class="form-horizontal" method="POST" action="/missoes" th:object="${missao}">
+<form class="form-horizontal" method="POST" action="/profissoes1" th:object="${profissao1}">
 		
 		
 		<div class="panel panel-default">		
 			<div class="panel-heading">
 				<div class="clearfix">
-			<h1 class="panel-title aw-titulo-panel">Cadastrar Missão</h1>
-			<a class="btn btn-link aw-link-panel" href="/missoes/buscar">Buscar Missões </a>
+			<h1 class="panel-title aw-titulo-panel">Cadastrar Profissao1</h1>
+			<a class="btn btn-link aw-link-panel" href="/profissoes1/buscar">Buscar Profissoes </a>
 </div>
 </div>
 </div>
@@ -27,7 +27,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 		<input type="hidden" th:field="*{codigo}"/>
 		
 			<div class="form-group">
-				<label for="nome" class="col-sm-2 control-label">Informe o nome da Missao
+				<label for="nome" class="col-sm-2 control-label">Informe o nome da Profissao
 				</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control" id="nome" th:field="*{nome}" />
@@ -35,7 +35,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 			</div>
 			
 			<div class="form-group">
-				<label for="descricao" class="col-sm-2 control-label">Descreva sua Missao
+				<label for="descricao" class="col-sm-2 control-label">Descreva a Profissão
 				</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control" id="descricao" th:field="*{descricao}" />
@@ -50,26 +50,12 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label for="requisitos" class="col-sm-2 control-label">Quais são os requisitos?
-				</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="requisitos" th:field="*{requisitos}" />
-				</div>
-			</div>
 			
-			<div class="form-group">
-				<label for="recompensa" class="col-sm-2 control-label">Quanto de xp para recompensas?
-				</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="recompensa" th:field="*{recompensa}" />
-				</div>
-			</div>
 			
 			
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-primary">Registrar Missão</button>
+					<button type="submit" class="btn btn-primary">Registrar Profissao</button>
 				</div>
 			</div>
 			</div>

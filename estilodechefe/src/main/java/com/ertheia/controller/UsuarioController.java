@@ -30,8 +30,6 @@ import com.ertheia.repository.Usuarios;
 public class UsuarioController {
 	
 	
-	
-    private ConnectionRepository connectionRepository;
     private static final String CADASTRO_VIEW = "CadastroUsuario";
     
     @Autowired
@@ -105,7 +103,6 @@ public class UsuarioController {
 		mv.addObject(usuario);
 		return mv;
 		
-				
 	}
 	
 	//Quando for DELETE, ele irá cair direto no metodo excluir
@@ -123,21 +120,10 @@ public class UsuarioController {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@ModelAttribute("todosStatusPais")
 	public List<StatusPais>todosStatusPais()
 	{
 		return Arrays.asList(StatusPais.values());
-		
 		
 	}
 	
@@ -145,7 +131,6 @@ public class UsuarioController {
 	public List<StatusPerfil>todosStatusPerfil()
 	{
 		return Arrays.asList(StatusPerfil.values());
-		
 		
 	}
 	

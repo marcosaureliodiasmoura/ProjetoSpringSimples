@@ -1,5 +1,6 @@
 package com.ertheia.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -9,6 +10,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -19,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-public class Usuario{
+public class Usuario implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +36,12 @@ public class Usuario{
 	private int nivel = 1;
 	
 	private double xp = 100;
+	
+	
+	@ManyToOne
+	private Profissao1 profissao;
+	
+	
 	
 	
 	@NotEmpty(message = "Informe o Nome do Usuário")
@@ -188,6 +198,16 @@ public class Usuario{
 	public void setPerfil(StatusPerfil perfil) {
 		this.perfil = perfil;
 	}
+
+	public Profissao1 getProfissao() {
+		return profissao;
+	}
+
+	public void setProfissao(Profissao1 profissao) {
+		this.profissao = profissao;
+	}
+	
+	
 	
 
 
