@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="LayoutPadrao">
+<head>
+
+<title>Buscar Usuario</title>
+
+</head>
+
+<section layout:fragment="conteudo">
+<div layout:include="MensagemGeral"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title aw-titulo-panel">Buscar Usuario</h1>
+				<a class="btn btn-link aw-link-panel" href="/usuarios/novo">Cadastrar
+					Novo Usuário</a>
+			</div>
+		</div>
+
+		<div class="panel-body">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th class="text-center col-md-1">#</th>
+						<th class="text-left col-md-2">Nome</th>
+						<th class="text-left col-md-2">Sobrenome</th>
+						<th class="text-left col-md-2">Profissão</th>
+						<th class="text-left col-md-2">Email</th>
+						<th>Data de Nascimento</th>
+						<th>Telefone</th>
+						<th>Pais</th>
+						<th>Estado</th>
+						<th>Perfil</th>
+						<th>Nivel</th>
+						<th>Xp</th>
+						
+						<th class="col-md-1"></th>
+					</tr>
+					
+					
+				</thead>
+				<tbody>
+				
+				
+					<tr th:each="usuario : ${usuarios}">
+						<td class="text-center" th:text="${usuario.codigo}">1</td>
+						<td th:text="${usuario.nome}">Nome</td>
+						<td th:text="${usuario.sobrenome}">Sobrenome</td>
+						<td th:text="${usuario.perfil}">Profissão</td>
+						<td th:text="${usuario.email}">Email</td>
+						<td th:text="${{usuario.dataNascimento}}">Data de Nascimento</td>
+						<td th:text="${{usuario.telefone}}">Telefone</td>
+						<td th:text="${{usuario.pais}}">País</td>
+						<td th:text="${{usuario.estado}}">Estado</td>
+						<td th:text="${{usuario.perfil}}">Perfil</td>
+						<td th:text="${{usuario.nivel}}">Nivel</td>
+						<td th:text="${{usuario.xp}}">Xp</td>
+						
+						
+						
+						<td class="text-center">
+						
+						
+						<a class="btn btn-link btn-xs" th:href="@{/usuarios/{codigo}(codigo=${usuario.codigo})}" 
+						title="Editar" rel="tooltip" data-placement="top">
+							 <span	class="glyphicon glyphicon-pencil"></span>
+						</a> 
+						
+						<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmarExcluirModal"
+						th:attr="data-codigo=${usuario.codigo}, data-nome=${usuario.nome}, data-sobrenome=${usuario.sobrenome}"
+						title="Excluir" rel="tooltip" data-placement="top">						
+						
+						<span class="glyphicon glyphicon-remove"></span>
+						</a>
+						
+						
+						</td>
+
+
+					</tr>
+					<tr>
+						<td colspan="10" th:if="${#lists.isEmpty(usuarios)}">Nenhum
+							Usuário Encontrado</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+		<div layout:include="DialogoConfirmarExcluir"></div>
+	</div>
+	
+</section>
+
+</html>
